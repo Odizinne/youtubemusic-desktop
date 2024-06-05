@@ -1,0 +1,26 @@
+{
+    "win": {
+    "artifactName": "YoutubeMusic-Desktop-Installer.exe",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "ytmusic_icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "ytmusic_icon.ico",
+      "uninstallerIcon": "ytmusic_icon.ico",
+      "installerHeaderIcon": "ytmusic_icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Youtube Music",
+      "runAfterFinish": false
+    }
+  }
+  

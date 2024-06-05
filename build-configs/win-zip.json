@@ -1,0 +1,15 @@
+{
+    "win": {
+    "artifactName": "YoutubeMusic-Desktop-Win.zip",
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "ytmusic_icon.ico"
+    }
+  }
+  

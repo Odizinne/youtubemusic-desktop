@@ -1,0 +1,28 @@
+{
+  "name": "youtubemusic-desktop",
+  "version": "1.0.0",
+  "description": "Simple YoutubeMusic electron app",
+  "main": "main.js",
+  "author": {
+    "name": "Ozidinne",
+    "email": "flora.aubry1994@gmail.com"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build:win-nsis": "electron-builder --config build-configs/win-nsis.json --publish never",
+    "build:win-zip": "electron-builder --config build-configs/win-zip.json --publish never"
+  },
+  "devDependencies": {
+    "electron": "^29.4.2",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "files": [
+      "**/*",
+      "!node_modules/**",
+      "!README.md",
+      "!.gitignore",
+      "!**/.github/**"
+    ]
+  }
+}
