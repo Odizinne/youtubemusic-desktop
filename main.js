@@ -1,14 +1,15 @@
 const { app, BrowserWindow } = require('electron');
 
+let mainWindow;
+
 function createWindow() {
-    const mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 1280,
         height: 720,
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
             enableRemoteModule: false,
-            //preload: path.join(__dirname, 'preload.js')
         }
     });
     
@@ -16,14 +17,25 @@ function createWindow() {
     mainWindow.loadURL('https://music.youtube.com/');
 }
 
-app.whenReady().then(() => {
-    createWindow();
-
-    app.on('activate', function () {
-        if (BrowserWindow.getAllWindows().length === 0) createWindow();
+if (!app.requestSingleInstanceLock()) {
+    app.quit();
+} else {
+    app.on('second-instance', () => {
+        if (mainWindow) {
+            if (mainWindow.isMinimized()) mainWindow.restore();
+            mainWindow.focus();
+        }
     });
-});
 
-app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin') app.quit();
-});
+    app.whenReady().then(() => {
+        createWindow();
+
+        app.on('activate', function () {
+            if (BrowserWindow.getAllWindows().length === 0) createWindow();
+        });
+    });
+
+    app.on('window-all-closed', function () {
+        if (process.platform !== 'darwin') app.quit();
+    });
+}
