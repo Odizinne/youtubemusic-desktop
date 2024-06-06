@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 let mainWindow;
 
@@ -9,12 +10,20 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
-            enableRemoteModule: false,
+        }
+    });
+
+    mainWindow.setMenu(null);
+    mainWindow.loadURL('https://music.youtube.com/');
+
+    mainWindow.on('close', (event) => {
+        event.preventDefault();
+        if (mainWindow) {
+            mainWindow.destroy();
+            mainWindow = null;
         }
     });
     
-    mainWindow.setMenu(null);
-    mainWindow.loadURL('https://music.youtube.com/');
 }
 
 if (!app.requestSingleInstanceLock()) {
