@@ -7,6 +7,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1280,
         height: 720,
+        show: false,
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
@@ -16,6 +17,9 @@ function createWindow() {
     mainWindow.setMenu(null);
     mainWindow.loadURL('https://music.youtube.com/');
 
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show();
+    });
     mainWindow.on('close', (event) => {
         event.preventDefault();
         if (mainWindow) {
