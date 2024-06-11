@@ -10,7 +10,8 @@
   "scripts": {
     "start": "electron .",
     "build:win-nsis": "electron-builder --config build-configs/win-nsis.json --publish never",
-    "build:win-zip": "electron-builder --config build-configs/win-zip.json --publish never"
+    "build:win-zip": "electron-builder --config build-configs/win-zip.json --publish never",
+    "build:linux-zip": "electron-builder --config build-configs/linux-zip.json --publish never"
   },
   "devDependencies": {
     "electron": "^29.4.2",
